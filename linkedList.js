@@ -30,10 +30,23 @@ const LinkedList = () => {
             if(this.head.next == null){ //if we prepend a new node, IE for the first time, the next node will be null, so this new head will be also the tail. So if we keep pushing new nodes using prepend, the tail will always be correct.
                this.tail = this.head
             }
-
             this.size++
+        },
+        at : function (index) {
 
+            let currentValue = this.head
+            let nextValue = currentValue.next
+            
+            for (let i = 0; i < index; i++) {
+               
+              currentValue = nextValue //exchanging these values, we are able to traverse the linked list using a loop, the value index determines how much we want to traverse the LL.
+              nextValue = currentValue.next   
+            }
+            
+            return currentValue
         }
+
+
     }
 
 }
@@ -45,7 +58,8 @@ const LinkedListExample = LinkedList()
 LinkedListExample.prepend(100)
 LinkedListExample.prepend(200)
 LinkedListExample.append(300)
-LinkedListExample.tail
 
 console.log(LinkedListExample)
+console.log(LinkedListExample.at(2))
+
 
