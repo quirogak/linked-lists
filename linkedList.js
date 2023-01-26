@@ -106,6 +106,14 @@ const LinkedList = () => {
               }
             }
             if (hasValue == false) return null
+        },
+        toString: function () {
+            //first, convert the LL to a string, and then, simplify it and replace commas with " => ".
+            const linkedList = JSON.stringify(this.head)
+            const simpleList = linkedList.replace(/"/g,"").replace(/:/g,"").replace(/{/g,"").replace(/}/g,"").replace(/next/g,"").replace(/data/g,"")
+            const finalList = simpleList.replace(/,/g," => ")
+
+            return finalList
         }
     }
 
@@ -124,10 +132,8 @@ LinkedListExample.append(400)
 
 
 
-console.log(LinkedListExample)
-console.log(LinkedListExample.contains(400))
-console.log(LinkedListExample.find(410))
-console.log(LinkedListExample.at(3))
+console.log(LinkedListExample.toString())
+
 
 
 
