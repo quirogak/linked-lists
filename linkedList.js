@@ -58,15 +58,39 @@ const LinkedList = () => {
 
             return currentValue
         },
-        pop : function () {
-
-            
+        pop : function () {            
           delete this.tail.data
           delete this.tail.next
-          
           this.size--
+  
+        },
+        contains : function (data){
 
+            let currentValue = this.head
+            let nextValue = currentValue.next
+            let hasValue = false
+
+            if(currentValue.data == data){  //if the head.data value of the linked list matches the input value, we return true, if not, we traverse the LL searching the input value.
+                hasValue = true
+                return hasValue
+            }
+            else {
+
+            for (let i = 0; i < this.size-1; i++) {
+               
+              currentValue = nextValue 
+              nextValue = currentValue.next  
+
+              if(currentValue.data == data){
+                 hasValue = true
+              }
+              
+            }
+            return hasValue
+        }
             
+
+
         }
 
 
@@ -87,7 +111,9 @@ LinkedListExample.pop()
 LinkedListExample.append(400)
 
 
+
 console.log(LinkedListExample)
+console.log(LinkedListExample.contains(400))
 
 
 
