@@ -87,14 +87,26 @@ const LinkedList = () => {
               
             }
             return hasValue
+               }
+        },
+        find: function (data) {
+
+            let currentValue = this.head
+            let nextValue = currentValue.next
+            let hasValue = false
+            // i used the traverse algorithm of at() and contains(), but instead of returning the node or a boolean, i returned the size of the linked list, when the node value is matched. 
+            for (let i = 0; i < this.size-1; i++) { 
+               
+              currentValue = nextValue
+              nextValue = currentValue.next
+
+              if (currentValue.data == data) {
+                hasValue = true
+                return this.size-1
+              }
+            }
+            if (hasValue == false) return null
         }
-            
-
-
-        }
-
-
-
     }
 
 }
@@ -114,6 +126,8 @@ LinkedListExample.append(400)
 
 console.log(LinkedListExample)
 console.log(LinkedListExample.contains(400))
+console.log(LinkedListExample.find(410))
+console.log(LinkedListExample.at(3))
 
 
 
