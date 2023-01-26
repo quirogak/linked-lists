@@ -13,15 +13,28 @@ const Node = (data,next) => {
 
 
 const LinkedList = () => {
+
     return {
         head:null,
         tail:null,
         size:0,
         append: function(data){
+            
+            if(Object.keys(this.tail).length === 0){ //after adding the pop() method, i had to create this conditional, because the new tail node was getting inside a double "next" parent.
 
+                this.tail.data = Node(data).data
+                this.tail.next= Node(data).next
+                this.tail = Node(data)
+                this.size++
+            }
+            else{
+            
             this.tail.next = Node(data)  //we append the node to the last.next node.
             this.tail = this.tail.next  //we change the tail value to the new node.
             this.size++
+            }
+            
+            
         },
         prepend : function (data) {
             currentHead = this.head
@@ -42,9 +55,20 @@ const LinkedList = () => {
               currentValue = nextValue //exchanging these values, we are able to traverse the linked list using a loop, the value index determines how much we want to traverse the LL.
               nextValue = currentValue.next   
             }
-            
+
             return currentValue
+        },
+        pop : function () {
+
+            
+          delete this.tail.data
+          delete this.tail.next
+          
+          this.size--
+
+            
         }
+
 
 
     }
@@ -58,8 +82,12 @@ const LinkedListExample = LinkedList()
 LinkedListExample.prepend(100)
 LinkedListExample.prepend(200)
 LinkedListExample.append(300)
+LinkedListExample.append(500)
+LinkedListExample.pop()
+LinkedListExample.append(400)
+
 
 console.log(LinkedListExample)
-console.log(LinkedListExample.at(2))
+
 
 
