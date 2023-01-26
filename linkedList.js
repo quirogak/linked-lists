@@ -121,19 +121,3 @@ const LinkedList = () => {
 
 
 
-const LinkedListExample = LinkedList()
-
-LinkedListExample.prepend(100)
-LinkedListExample.prepend(200)
-LinkedListExample.append(300)
-LinkedListExample.append(500)
-LinkedListExample.pop()
-LinkedListExample.append(400)
-
-
-
-console.log(LinkedListExample.toString())
-
-
-
-
